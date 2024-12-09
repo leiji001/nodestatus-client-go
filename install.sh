@@ -82,12 +82,12 @@ function install_client() {
     ;;
   esac
   mkdir -p /usr/local/NodeStatus/client/
-  cd /tmp && wget -N "https://github.com/cokemine/nodestatus-client-go/releases/latest/download/status-client_linux_${arch}.tar.gz"
+  cd /tmp && wget -N "https://ghp.ci/https://github.com/cokemine/nodestatus-client-go/releases/latest/download/status-client_linux_${arch}.tar.gz"
   tar -zxvf "status-client_linux_${arch}.tar.gz" status-client
   mv status-client /usr/local/NodeStatus/client/
   chmod +x /usr/local/NodeStatus/client/status-client
   [[ -n ${dsn} ]] && echo -e "DSN=\"${dsn}\"" >/usr/local/NodeStatus/client/config.conf
-  wget https://raw.githubusercontent.com/cokemine/nodestatus-client-go/master/service/status-client.service -P /usr/lib/systemd/system/
+  wget https://ghp.ci/https://raw.githubusercontent.com/cokemine/nodestatus-client-go/master/service/status-client.service -P /usr/lib/systemd/system/
   systemctl enable status-client
   systemctl start status-client
   check_pid
